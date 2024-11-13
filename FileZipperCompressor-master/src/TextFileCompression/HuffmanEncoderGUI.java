@@ -24,7 +24,7 @@ public class HuffmanEncoderGUI {
     private String log;
 
     private JButton compressionRatio;
-    HuffmanEncoderGUI() {
+    public HuffmanEncoderGUI() {
         JFrame f = new JFrame();
         f.setTitle("Huffman - Text File ");
         f.setSize(600, 400); // Set window size

@@ -11,7 +11,7 @@ public class HuffmanEncoderTest {
     @BeforeEach
     void setUp() {
         String text = "hello huffman";
-      message = new Message(text);
+        message = new Message(text);
         encoder = new HuffmanEncoder(message);
     }
 
