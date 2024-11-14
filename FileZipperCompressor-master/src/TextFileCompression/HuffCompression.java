@@ -30,7 +30,7 @@ public class HuffCompression {
         byte[] huffmanCodeBytes = zipBytesWithCodes(bytes, huffmanCodes);
         return huffmanCodeBytes;
     }
-
+//<byte frequency>
     private static MinPriorityQueue<ByteNode> getByteNodes(byte[] bytes) {
         MinPriorityQueue<ByteNode> nodes = new MinPriorityQueue<ByteNode>();
         Map<Byte, Integer> tempMap = new HashMap<>();
@@ -45,6 +45,7 @@ public class HuffCompression {
             nodes.add(new ByteNode(entry.getKey(), entry.getValue()));
         return nodes;
     }
+
 
     private static ByteNode createHuffmanTree(MinPriorityQueue<ByteNode> nodes) {
         while (nodes.len() > 1) {
@@ -77,12 +78,15 @@ public class HuffCompression {
         }
     }
 
+    //obtain new seq for each char  huffcodes char - newstring
+
     private static byte[] zipBytesWithCodes(byte[] bytes, Map<Byte, String> huffCodes) {
         StringBuilder strBuilder = new StringBuilder();
         for (byte b : bytes)
             strBuilder.append(huffCodes.get(b));
 
         int length=(strBuilder.length()+7)/8;
+
         byte[] huffCodeBytes = new byte[length];
         int idx = 0;
         for (int i = 0; i < strBuilder.length(); i += 8) {
