@@ -18,7 +18,6 @@ public class DctProcessor {
                     }
                 }
 
-                // Apply normalization factors
                 double cu = (u == 0) ? 1 / Math.sqrt(2) : 1;
                 double cv = (v == 0) ? 1 / Math.sqrt(2) : 1;
                 result[u][v] = 0.25 * cu * cv * sum;
@@ -28,7 +27,6 @@ public class DctProcessor {
         return result;
     }
 
-    // Apply inverse DCT (IDCT)
     public double[][] idct(double[][] block) {
         double[][] result = new double[blockSize][blockSize];
 

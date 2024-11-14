@@ -24,7 +24,7 @@ public class ZippingSoftware extends JFrame {
         gbc.insets = new Insets(10, 10, 10, 10); // Add padding around components
         setLocationRelativeTo(null); // Center the window
 
-        // Heading label
+
         headingLabel = new JLabel("");
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -34,7 +34,7 @@ public class ZippingSoftware extends JFrame {
         gbc.anchor = GridBagConstraints.CENTER;
         add(headingLabel, gbc);
 
-        // Folder to zip label
+
         JLabel folderPathLabel = new JLabel("Folder to Zip:");
         gbc.gridx = 0;
         gbc.gridy = 1;
@@ -43,7 +43,6 @@ public class ZippingSoftware extends JFrame {
         folderPathLabel.setForeground(Color.WHITE);
         add(folderPathLabel, gbc);
 
-        // Folder path text field
         folderPathTextField = new JTextField();
         folderPathTextField.setEditable(false); // Not editable directly
         gbc.gridx = 1;
@@ -199,7 +198,6 @@ public class ZippingSoftware extends JFrame {
                 }
             }
 
-            // Proceed with zipping the folder
             try {
                 zipFolder(selectedFolderPath, zipFileName);
                 statusLabel.setText("Status: Folder zipped successfully!");

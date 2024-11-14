@@ -8,8 +8,6 @@ public class ImageCompressor {
     public void compressImage(File inputFile, File outputFile, float quality) throws Exception {
 
         BufferedImage image = ImageIO.read(inputFile);
-
-
         BufferedImage compressedImage = applyDCTCompression(image, 1f);
 
         ImageIO.write(compressedImage, "jpg", outputFile);
@@ -20,14 +18,10 @@ public class ImageCompressor {
         int height = image.getHeight();
         int blockSize = 8; // DCT block size
         DctProcessor dctProcessor = new DctProcessor(blockSize);
-
         BufferedImage compressedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-
         for (int i = 0; i < width; i += blockSize) {
             for (int j = 0; j < height; j += blockSize) {
-                // Process each color channel independently (R, G, B)
                 for (int channel = 0; channel < 3; channel++) {
-                    // Extract 8x8 block for the current channel
                     double[][] block = new double[blockSize][blockSize];
                     for (int x = 0; x < blockSize; x++) {
                         for (int y = 0; y < blockSize; y++) {
@@ -36,11 +30,7 @@ public class ImageCompressor {
                             }
                         }
                     }
-
-                    // Apply DCT
                     double[][] dctBlock = dctProcessor.dct(block);
-
-                    // Quantize DCT coefficients based on quality
                     dctProcessor.quantize(dctBlock, quality);
 
                     // Inverse DCT
